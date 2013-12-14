@@ -1,4 +1,4 @@
 star-of-africa
 ==============
 
-Our game we used to play
+Our game we used to play deep earlier.

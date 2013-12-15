@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="lt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Firebase-based chat" />    
+    <title>STAR OF AFRIKA/chat</title>
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+	<style>
+		.online {color: green;}
+		#posts {
+			background: yellow;
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 70%;
+			height: 100%;
+		}
+		#msg {
+			position: absolute;
+			width: 80%;
+			height: 10%;
+			bottom: 2%;
+			left: 10%;
+		}
+		#communication {
+			position: absolute;
+			top: 2%;
+			width: 80%;
+			left: 10%;
+			height: 80%;
+			background: white;
+			border: 1px solid black;
+			overflow-y: auto;
+		}
+	</style>
+</head>
+<body>
+	<h1 id="currentUserTitle">Pokalbių kambarys</h1>
+	<div id="users">
+	</div>
+	<p id="currentUser">
+		<input id="name" placeholder="Jūsų vardas" />
+	</p>
+	<div id="posts">
+		<div id="communication"></div>
+		<textarea id="msg" placeholder="Pranešimas"></textarea>
+	</div>
+	
+	<script>
+		Date.prototype.format = function(){
+			return this.getFullYear() + '-' + (this.getMonth()+1) + '-' + this.getDate() + ' ' + this.getHours() + ':' + this.getMinutes();
+		}
+		
+		
+		var Chat = {};
+		
+		Chat.Conversation = function(currentUsername, usernameToChatWith, chatRef){
+			var self = this;
+			this.friend = usernameToChatWith;
+			this.author = currentUsername;
+			this.findRef(chatRef);
+			this.chat.on('child_added', function(snapshot){
+				var post = snapshot.val();
+				var date = new Date(post.time - 0);
+				var line = $('<p>'+ date.format() + ' ' + post.username + ': ' + post.message + '</p>');
+				$('#communication').append(line);
+			});
+		};
+		
+		Chat.Conversation.prototype.send = function(msg){
+			this.chat.push({time: new Date().getTime(), username: this.author, message: msg});
+		};
+		
+		Chat.Conversation.prototype.findRef = function(chatRef){
+			var myChatPath = 'users/' + this.author + '/conversations/' + this.friend + '/id/';
+			var hisChatPath = 'users/' + this.friend + '/conversations/' + this.author + '/id/';
+			var self = this;
+			var idRef = chatRef.child(myChatPath);
+			idRef.on('value', function(snapshot){
+				var val = snapshot.val();
+				if(val === null) {
+					self.chat = chatRef.child('chats').push();
+					self.id = self.chat.name();
+					idRef.set(self.id);
+					chatRef.child(hisChatPath).set(self.id);
+				} else {
+					self.id = snapshot.val();
+					self.chat = chatRef.child('chats/' + self.id);
+				}
+			});
+		}
+		
+		
+		$(function(){
+			var username = null;
+			var actualChat = null;
+			var chat = new Firebase("https://arrika.firebaseio.com/chat");
+			var users = chat.child("users");
+			users.on('child_added', function(snapshot){
+				var usernameOnline = snapshot.name();
+				var user = snapshot.val();
+				var userLine = $("<p id='"+usernameOnline+"'>"+usernameOnline+"</p>").appendTo('#users');
+				if(!!user.online) {
+					userLine.addClass('online');
+				}
+				userLine.click(function(){
+					var el = $(this);
+					actualChat = new Chat.Conversation(username, el.attr('id'), chat);
+				});
+			});
+			
+			users.on('child_changed', function(snapshot){
+				var name = snapshot.name();
+				var online = !!snapshot.child('online').val();
+				var el = $('#' + name);
+				if(online) {
+					el.addClass('online');
+				} else {
+					el.removeClass('online');
+				}
+			});
+			
+			
+			$("#name").keypress(function(ev){
+				var self = $(this);
+				if(ev.keyCode == 13) {
+					username = self.val();
+					chat.child("users/" + username).update({online: true});
+					users.child(username).onDisconnect().update({online: false});
+					$('#currentUser').empty();
+					$('#currentUserTitle').empty().append(username);
+				}
+			});
+			
+			$("#msg").keypress(function(ev){
+				var self = $(this);
+				if(ev.keyCode == 13) {
+					var message = self.val();
+					actualChat.send(message);
+					self.val('');
+				}
+			});
+		});
+	</script>
+</body>
+</html>

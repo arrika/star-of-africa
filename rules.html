@@ -4,52 +4,49 @@
     <meta charset="utf-8" />	
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="description" content="Game Star of Africa alpha." />    
-    <meta name="author" content="bionick8" />
+    <meta name="author" content="bionick8, skankjo" />
     <meta name="copyright" content="bionick8. Copyright (c) 2013" />
     <title>STAR OF AFRIKA alpha</title>
-    <link rel="stylesheet" href="css/docs.css" />
+    <link rel="stylesheet" href="css/foundation.min.css" />
+	<link rel="stylesheet" href="css/normalize.css" />
     <script src="js/modernizr.js"></script>
-	<script src="phaser.min.js"></script>
 </head>
 <body>
 <!-- Header and Nav -->
-<nav class="top-bar docs-bar hide-for-small" data-topbar>
-  <ul class="title-area">
-    <li class="name">
-      <h1><a href="index.html">STAR OF AFRIKA alpha</a></h1>
-    </li>
-  </ul>
-
-  <section class="top-bar-section">
-    <ul class="right">
-      <li class="divider"></li>
-      <li>
-        <a href="#" class="">Bugtracker</a>
-      </li>
-      <li class="divider"></li>
-      <li>
-        <a href="rules.html" class="">Rules</a>
-      </li>
-      <li class="divider"></li>
-      <li>
-        <a href="#" class="">About</a>
-      </li>
-      <li class="divider"></li>
-      <li class="has-form">
-        <a href="#" class="small button">Join us</a>
-    </ul>
-  </section>
-</nav>
-<nav class="tab-bar show-for-small">
-  <a class="left-off-canvas-toggle menu-icon">
-    <span>Foundation</span>
-  </a>
-</nav>
-<!-- End Header and Nav -->
-
-<!-- Main Page Content -->
-<div class="row">
-	<div class="large-6 columns">
+<div class="off-canvas-wrap"> 
+	<div class="inner-wrap">
+	<nav class="tab-bar">
+		<section class="left-small">
+			<a class="left-off-canvas-toggle menu-icon" title="Main Menu"><span></span></a>
+		</section>
+		<section class="middle tab-bar-section">
+			<h1 class="title">STAR OF AFRIKA alpha</h1>
+		</section>
+		<section class="right-small">
+			<a class="right-off-canvas-toggle menu-icon" title="Users"><span></span></a>
+		</section>
+	</nav>
+	<aside class="left-off-canvas-menu">
+		<ul class="off-canvas-list">
+			<li><label>STAR OF AFRIKA alpha</label></li>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="#">Bugtracker</a></li>
+			<li><a href="rules.html">Rules</a></li>
+			<li><a href="#">About</a></li>
+			<li class="has-form"><a href="#" class="small button">Join us</a></li>
+		</ul>
+	</aside>
+	<aside class="right-off-canvas-menu">
+		<ul class="off-canvas-list">
+			<li><label>Users</label></li>
+			<li><a href="#">Skankjo</a></li>
+			<li><a href="#">Bionick8</a></li>
+		</ul>
+	</aside>
+	<!-- Main content-->
+	<section class="main-section">
+		<div class="row">
+			<div class="large-6 columns">
 <h2>ЗВЕЗДА АФРИКИ</h2></hr>
 <p>Так назывался самый большой в мире алмаз, который был найден в 1905 г. в Трансваале, на юге Африки. Его вес равнялся  (621 грамм), а размеры составляли 10 x 6,5 x 5 см.
 Позднее из этого алмаза было изготовлено 105 бриллиантов, крупнейшие из них украшают скипетр английских монархов и корону Британской Империи.</p>
@@ -77,22 +74,20 @@
 Выиграет тот, кто первым доставит алмаз в Танжер или Каир.
 По желанию вы можете менять наши правила и вводить свои. Споры в игре рекомендуем решать при помощи кубика.</p>
 <h3>ЖЕЛАЕМ ВАМ УДАЧИ !!!</h3>
+			</div>
+		</div>
+	</section>
+	<!-- End Content-->
+	<a class="exit-off-canvas"></a>
+	<p class="copyright">&copy; 2013 bionick8. All rights reserved.</p>
 	</div>
 </div>
-<!-- End Main Content -->
-
+<!-- End Nav-->
 <!-- Footer -->
-<div class="zurb-footer-bottom">
-  <div class="row">
-    <div class="medium-4 medium-4 push-8 columns"></div>
-     <div class="medium-8 medium-8 pull-4 columns">
-       <p class="copyright">&copy; 2013 bionick8. All rights reserved.</p>
-    </div>          
-</div>
     <script src="js/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
     <script>
 		$(document).foundation();
     </script>
-  </body>
+</body>
 </html>

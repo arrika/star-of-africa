@@ -4,64 +4,69 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="description" content="Game Star of Africa alpha." />    
-    <meta name="author" content="bionick8" />
+    <meta name="author" content="bionick8, skankjo" />
     <meta name="copyright" content="bionick8. Copyright (c) 2013" />
     <title>STAR OF AFRIKA alpha</title>
-    <link rel="stylesheet" href="css/docs.css" />
+    <link rel="stylesheet" href="css/foundation.min.css" />
+	<link rel="stylesheet" href="css/normalize.css" />
     <script src="js/modernizr.js"></script>
-	<script src="js/phaser.min.js"></script>
-	<script src="js/star.js"></script>
+
 </head>
 <body>
 <!-- Header and Nav -->
-<nav class="top-bar docs-bar hide-for-small" data-topbar>
-  <ul class="title-area">
-    <li class="name">
-      <h1><a href="index.html">STAR OF AFRIKA alpha</a></h1>
-    </li>
-  </ul>
-
-  <section class="top-bar-section">
-    <ul class="right">
-      <li class="divider"></li>
-      <li>
-        <a href="#" class="">Bugtracker</a>
-      </li>
-      <li class="divider"></li>
-      <li>
-        <a href="rules.html" class="">Rules</a>
-      </li>
-      <li class="divider"></li>
-      <li>
-        <a href="#" class="">About</a>
-      </li>
-      <li class="divider"></li>
-      <li class="has-form">
-        <a href="#" class="small button">Join us</a>
-    </ul>
-  </section>
-</nav>
-<nav class="tab-bar show-for-small">
-  <a class="left-off-canvas-toggle menu-icon">
-    <span>STAR OF AFRIKA alpha</span>
-  </a>
-</nav>
-<!-- End Header and Nav -->
-
-<!-- Main Page Content -->
+<div class="off-canvas-wrap"> 
+	<div class="inner-wrap">
+	<nav class="tab-bar">
+		<section class="left-small">
+			<a class="left-off-canvas-toggle menu-icon" title="Main Menu"><span></span></a>
+		</section>
+		<section class="middle tab-bar-section">
+			<h1 class="title">STAR OF AFRIKA alpha</h1>
+		</section>
+		<section class="right-small">
+			<a class="right-off-canvas-toggle menu-icon" title="Users"><span></span></a>
+		</section>
+	</nav>
+	<aside class="left-off-canvas-menu">
+		<ul class="off-canvas-list">
+			<li><label>STAR OF AFRIKA alpha</label></li>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="#">Bugtracker</a></li>
+			<li><a href="rules.html">Rules</a></li>
+			<li><a href="#">About</a></li>
+			<li class="has-form"><a href="#" class="small button">Join us</a></li>
+		</ul>
+	</aside>
+	<aside class="right-off-canvas-menu">
+		<ul class="off-canvas-list">
+			<li><label>Users</label></li>
+			<li><a href="#">Skankjo</a></li>
+			<li><a href="#">Bionick8</a></li>
+		</ul>
+	</aside>
+	<!-- Main content-->
+	<section class="main-section">
 <div class="row">
-	<div class="large-12 columns">	
+	<div class="large-6 columns">	
 		<h2>Welcome back %username%</h2>
 		<div id="content"></div>
 	</div>
 </div>
-<!-- End Main Content -->
-
+			</div>
+		</div>
+	</section>
+	<!-- End Content-->
+	<a class="exit-off-canvas"></a>
+	</div>
+</div>
+<!-- End Nav-->
 <!-- Footer -->
     <script src="js/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
     <script>
 		$(document).foundation();
     </script>
-  </body>
+	<script src="js/phaser.min.js"></script>
+	<script src="js/star.js"></script>
+</body>
 </html>

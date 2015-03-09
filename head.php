@@ -13,24 +13,24 @@
 <?php echo '</head>' . "\n";?>
 <body>
 <!-- Header and Nav -->
-<div class="off-canvas-wrap"> 
+<div class="off-canvas-wrap" data-offcanvas> 
 	<div class="inner-wrap">
 	<nav class="tab-bar">
 		<section class="left-small">
-			<a class="left-off-canvas-toggle menu-icon" data-tooltip data-options="disable_for_touch:true" class="has-tip" title="Main Menu">
+			<a class="left-off-canvas-toggle menu-icon" href="#" data-options="disable_for_touch:true">
 			<span></span></a>
 		</section>
 		<section class="middle tab-bar-section">
 			<h1 class="title"><?php echo $sitename;?></h1>
 		</section>
 		<section class="right-small">
-			<a class="right-off-canvas-toggle menu-icon" data-tooltip data-options="disable_for_touch:true" class="has-tip" title="Users">
+			<a class="right-off-canvas-toggle menu-icon" href="#" data-options="disable_for_touch:true">
 			<span></span></a>
 		</section>
 	</nav>
 	<aside class="left-off-canvas-menu">
 		<ul class="off-canvas-list">
-			<li><label><?php echo $sitename;?></label></li>
+			<li><label>Menu</label></li>
 			<li><a href="index.php">Home</a></li>
 			<li><a href="bugtracker.php">Bugtracker</a></li>
 			<li><a href="rules.php">Rules</a></li>
